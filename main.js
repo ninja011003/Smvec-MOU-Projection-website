@@ -4,7 +4,7 @@ const path = require('path')
 const multer = require('multer');
 const bodyParser = require('body-parser');
 const {uploadPDF,retrieveLinks} = require('./DriveFunctions');
-
+const enc_text = require('./password');
 
 
 const app = express()
@@ -28,7 +28,9 @@ app.get('/admin',(req,res)=>{
 })
 
 app.post('/login',(req,res)=>{
-    
+    if(enc_text.username==req.body.username&&enc_text.password==req.body.password){
+        res.render('admin');
+    }
 })
 
 app.post('/upload', upload.single('pdf'), async (req, res) => {
