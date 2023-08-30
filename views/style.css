@@ -1,0 +1,569 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+body{
+  font-family: 'Poppins', sans-serif;
+  background: #F7EBE8;
+}
+nav {
+  height: 150px;
+  display: flex;
+}
+
+.logo {
+  flex-basis: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 100px;
+  padding-left: 50px;
+}
+
+.nav-options {
+  flex-basis: 50%;
+  align-content: end;
+  display: flex;
+  gap: 50px;
+  justify-content: end;
+  align-items: center;
+}
+
+.nav-options a button{
+  background: transparent;
+  padding: 10px 20px;
+  font-size: 20px;
+  border-radius: 30px;
+  color: #E54B4B;
+  font-family: 'Poppins', sans-serif;
+  border: 2px solid #E54B4B;
+  cursor: pointer;
+}
+.MOU{
+  font-family: 'Poppins', sans-serif;
+}
+.MOU h1{
+  font-weight: 400;
+  font-size: 35px;
+  text-align: center;
+  color: #E54B4B;
+  position: relative;
+}
+.MOU h1::after{
+    content: '';
+    width: 100px;
+    height: 4px;
+    background: #E54B4B;
+    position: absolute;
+    bottom: -15px;
+    border-radius: 50px;
+    left: 705px;
+}
+.cards{
+  display: flex;
+  gap: 70px;
+  margin: 50px;
+  flex-wrap: wrap;
+}
+.card {
+  height: 350px;
+  width: 295px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 30px;
+  perspective: 1000px;
+}
+.card img{
+  height: 200px;
+  margin: 20px 0px;
+  border-radius: 10px;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+}
+.card h2{
+  font-size: 20px;
+  font-weight: 400;
+  color: #444140;
+  padding: 0px 20px;
+  text-align: center;
+}
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.999s;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card-front {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  justify-content: center;
+  font-size: 24px;
+  transform: rotateY(0deg);
+  box-shadow: 0 10px 20px #1e1e2425;
+}
+
+.card-back {
+  background-color: #E54B4B;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 400;
+  transform: rotateY(180deg);
+  box-shadow: 0 10px 20px #1e1e2425;
+}
+.card-back h3{
+  font-weight: 400;
+  margin: 0;
+  font-size: 20px;
+}
+.card-back p{
+  font-size: 15px;
+  margin: 20px 20px;
+}
+.card-back a button{
+  font-size: 16px;
+  text-decoration: none;
+  padding: 5px 15px;
+  font-family: 'Poppins', sans-serif;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  color: #E54B4B;
+  cursor: pointer;
+}
+
+/* Mobile and Tablet Styles */
+@media screen and (max-width: 480px) {
+  body{
+    padding: 0;
+  }
+  nav {
+    height: 100px;
+    display: block;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 100px;
+    object-fit: contain;
+  }
+  
+  .logo img {
+    padding-left: 0;
+    height: 60px;
+  }
+  
+  .nav-options {
+    align-content: end;
+    display: flex;
+    gap: 30px;
+    justify-content: end;
+    align-items: center;
+    font-size: 15px;
+  }
+  
+  .nav-options a button{
+    background: transparent;
+    padding: 0;
+    font-size: 20px;
+    border-radius: 0;
+    color: #E54B4B;
+    font-family: 'Poppins', sans-serif;
+    border: 2px solid transparent;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  .MOU{
+    font-family: 'Poppins', sans-serif;
+  }
+  .MOU h1{
+    font-weight: 400;
+    font-size: 35px;
+    text-align: center;
+    color: #E54B4B;
+    position: relative;
+    margin-top: 50px;
+  }
+  .MOU h1::after{
+      visibility: hidden;
+  }
+  .cards{
+    display: flex;
+    gap: 70px;
+    margin: 50px;
+    flex-wrap: wrap;
+  }
+  .card {
+    height: 350px;
+    width: 295px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 30px;
+    perspective: 1000px;
+  }
+  .card img{
+    height: 200px;
+    margin: 20px 0px;
+    border-radius: 10px;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+  }
+  .card h2{
+    font-size: 20px;
+    font-weight: 400;
+    color: #444140;
+    padding: 0px 20px;
+    text-align: center;
+  }
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.999s;
+  }
+  
+  .card:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+  
+  .card-front {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    justify-content: center;
+    font-size: 24px;
+    transform: rotateY(0deg);
+    box-shadow: 0 10px 20px #1e1e2425;
+  }
+  
+  .card-back {
+    background-color: #E54B4B;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 400;
+    transform: rotateY(180deg);
+    box-shadow: 0 10px 20px #1e1e2425;
+  }
+  .card-back h3{
+    font-weight: 400;
+    margin: 0;
+    font-size: 20px;
+  }
+  .card-back p{
+    font-size: 15px;
+    margin: 20px 20px;
+  }
+  .card-back a button{
+    font-size: 16px;
+    text-decoration: none;
+    padding: 5px 15px;
+    font-family: 'Poppins', sans-serif;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    color: #E54B4B;
+    cursor: pointer;
+  }
+}
+
+/* Admin */
+
+.form-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: 50px;
+  border-radius: 4px;
+  padding: 30px;
+  width: 350px;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 10px 20px #1e1e2425;
+}
+.form-wrapper h2 {
+  color: #E54B4B;
+  font-size: 2rem;
+  font-weight: 400;
+}
+.form-wrapper form {
+  margin: 25px 0 65px;
+}
+form .form-control {
+  height: 50px;
+  position: relative;
+  margin-bottom: 30px;
+}
+.form-control input {
+  height: 100%;
+  width: 90%;
+  background: #F7EBE8;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  color: black;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  padding: 0 20px;
+}
+.form-control input:is(:focus, :valid) {
+  background: #f7dad3;
+  padding: 16px 20px 0;
+}
+.form-control label {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  pointer-events: none;
+  color: #8c8c8c;
+  transition: all 0.1s ease;
+}
+.form-control input:is(:focus, :valid)~label {
+  font-size: 0.75rem;
+  transform: translateY(-130%);
+}
+form button {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 1rem;
+  background: #E54B4B;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  margin: 0px 0 10px;
+  cursor: pointer;
+  transition: 0.1s ease;
+  font-family: 'Poppins', sans-serif;
+  
+}
+form button:hover {
+  background: #c40812;
+}
+
+@media (max-width: 740px) {
+  body::before {
+      display: none;
+  }
+  nav, .form-wrapper {
+      padding: 20px;
+  }
+  nav a img {
+      width: 140px;
+  }
+  .form-wrapper {
+      width: 100%;
+      top: 43%;
+  }
+  .form-wrapper form {
+      margin: 25px 0 40px;
+  }
+}
+
+/* Admin Page */
+.logout{
+  height: 5vh;
+  display: flex;
+  margin: 10px;
+  align-items: end;
+  justify-content: right;
+  margin-right: 0px;
+}
+.logout button{
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: white;
+  box-shadow: 0px 5px 10px #1e1e2425;
+  font-size: 15px;
+  border-radius: 10px;
+  padding: 5px 20px;
+  margin: 5px 5px;
+  cursor: pointer;
+  background: #E54B4B;
+  border: transparent;
+  font-family: 'Poppins', sans-serif;
+}
+.admin{
+  background: transparent;
+  height: 65vh;
+  display: flex;
+}
+.display{
+  flex-basis: 40%;
+  background: transparent;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+.table{
+  background:white;
+  border: 2px solid transparent;
+  border-radius:5px;
+  box-shadow: 0 10px 20px #1e1e2425;
+  text-align: center;
+  width: 90%;
+}
+.table thead{
+  font-weight: 500;
+  position: relative;
+}
+.table thead::after{
+  content: '';
+  width: 100%;
+  height: 1px;
+  background: #93939375;
+  position: absolute;
+  left: 0;
+  border-radius: 50px;
+}
+td{
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius:5px;
+}
+.action{
+  display: flex;
+  justify-content: center;
+}
+.edit,.delete{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: white;
+  box-shadow: 0px 5px 10px #1e1e2425;
+  font-size: 15px;
+  border-radius: 30px;
+  padding: 5px 10px;
+  margin: 5px 5px;
+  cursor: pointer;
+}
+.edit{
+  background: white;
+  color: black;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.delete{
+  background: #E54B4B;
+  border: 1px solid transparent;
+}
+.edit img{
+  height: 15px;
+}
+.delete img{
+  height: 15px;
+}
+.add{
+  flex-basis: 60%;
+  background: transparent;
+  display: flex;
+  justify-content: start;
+}
+.form-wrapper2 {
+  position: absolute;
+  width: 845px;
+  border-radius: 4px;
+  padding: 30px;
+  background: white;
+  box-shadow: 0 10px 20px #1e1e2425;
+}
+.form-wrapper2 h2 {
+  color: #000000;
+  font-size: 2rem;
+  font-weight: 400;
+}
+form .form-control2 {
+  height: 40px;
+  position: relative;
+  margin-bottom: 20px;
+}
+.form-control2 input {
+  height: 100%;
+  width: 95%;
+  background: #f7ebe895;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  color: black;
+  font-size: 1rem;
+  padding: 0 20px;
+  font-family: 'Poppins', sans-serif;
+}
+.form-control2 input:is(:focus, :valid) {
+  background: #f7dad3;
+  padding: 16px 20px 0;
+}
+.form-control2 label {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  pointer-events: none;
+  color: #00000090;
+  transition: all 0.1s ease;
+}
+.form-control2 input:is(:focus, :valid)~label {
+  font-size: 0.75rem;
+  transform: translateY(-130%);
+}
+#file{
+  display: none;
+}
+.upload{
+  border-radius: 10px;
+  border: 1px dashed #E54B4B;
+  color: #E54B4B;
+  padding: 10px 20px;
+}

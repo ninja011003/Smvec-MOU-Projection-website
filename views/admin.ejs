@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Admin Sign In</title>
+</head>
+
+<body>
+  <nav>
+    <div class="logo"><img src="img/Smvec-crop.png" alt=""></div>
+    <div class="nav-options">
+      <a href="#"><button style="border: 2px solid transparent" class="btn">MoU's</button></a>
+      <a href="#"><button style="border: 2px solid transparent" class="btn">Admin</button></a>
+      <a href="#"><button style="margin-right:50px;">Contact Us</button></a>
+    </div>
+  </nav>
+  <div class="logout">
+    <button>LogOut</button>
+  </div>
+  <div class="admin">
+    <div class="display">
+      <table class="table">
+        <thead>
+          <tr>
+            <td>Sl.No.</td>
+            <td>MoU's</td>
+            <td>Action</td>
+          </tr>
+        </thead>
+        <tr>
+          <td>1</td>
+          <td>TMI</td>
+          <td class="action">
+            <div class="edit">
+              Edit <img src="img/edit.png" alt="">
+            </div>
+            <div class="delete">
+              Delete <img src="img/delete.png" alt="">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Great Learning</td>
+          <td class="action">
+            <div class="edit">
+              Edit <img src="img/edit.png" alt="">
+            </div>
+            <div class="delete">
+              Delete <img src="img/delete.png" alt="">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Vlands Best Hub</td>
+          <td class="action">
+            <div class="edit">
+              Edit <img src="img/edit.png" alt="">
+            </div>
+            <div class="delete">
+              Delete <img src="img/delete.png" alt="">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Virtusa</td>
+          <td class="action">
+            <div class="edit">
+              Edit <img src="img/edit.png" alt="">
+            </div>
+            <div class="delete">
+              Delete <img src="img/delete.png" alt="">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>EduSkills</td>
+          <td class="action">
+            <div class="edit">
+              Edit <img src="img/edit.png" alt="">
+            </div>
+            <div class="delete">
+              Delete <img src="img/delete.png" alt="">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="add">
+      <div class="form-wrapper2">
+        <h2 style="margin-top: 0;">Add MoU</h2>
+        <form action="#" class="add-form">
+          <div class="form-control2">
+            <input type="text" required>
+            <label>Company or Organisation Name</label>
+          </div>
+          <div class="form-control2">
+            <input type="text" required>
+            <label>Year of Signing</label>
+          </div>
+          <div class="form-control2">
+            <input type="text" required>
+            <label>Duration</label>
+          </div>
+          <div style="display:flex; gap: 20px;">
+            <div>
+              <input type="file" id="file">
+            <label for="file" class="upload">Upload Image</label>
+            </div>
+            <div>
+              <input type="file" id="file">
+            <label for="file" class="upload">Upload MoU PDF</label>
+            </div>
+          </div>
+          <button type="submit" style="margin-top: 30px;">Add</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
