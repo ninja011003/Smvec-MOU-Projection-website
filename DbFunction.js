@@ -18,7 +18,7 @@ async function storedetails() {
 
     
         // Insert the company information
-        const result = await collection.insertOne(companyInfo);
+        const result = await collection.insertOne(companydetails);
         console.log(`Inserted ${result.insertedCount} document(s)`);
 
     } catch (err) {
@@ -31,12 +31,14 @@ async function storedetails() {
 }
 
 // Call the main function
-storedetails(companydetails);
-
-//example 
-const companyInfo = {
+const companydetails = {
     companyName: 'Example Company',
     duration: '2023-2025',
     iconUrl: 'https://example.com/icon.png',
-    imageUrl: 'https://example.com/image.png'
+    d0cumentUrl: 'https://example.com/image.png',
+    department: ['aids','cse']
 };
+storedetails(companydetails);
+
+//example 
+
