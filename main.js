@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const {uploadPDF,retrieveLinks} = require('./DriveFunctions');
 
 
-//mollai
+
 const app = express()
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine','ejs')
