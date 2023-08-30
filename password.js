@@ -6,4 +6,3 @@ module.exports ={
     username :  'smvecmous@gmail.com'
 }
 
-//hsyjtdj/t
