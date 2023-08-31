@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="dept.css">
+  <script src="dept.js"></script>
   <link rel="stylesheet" href="style.css">
   <title>Admin Sign In</title>
 </head>
@@ -71,11 +73,26 @@
             <label for="file" class="upload">Upload MoU PDF</label>
             </div>
           </div>
+
+          <div style="margin-top: 20px;">
+            <label for="dept" style="margin-bottom: 20px;">Select the Department</label>
+            <select name="dept" id="dept" multiple >
+              <option value="1">AIDS</option>
+              <option value="2">IT</option>
+              <option value="3">CSE</option>
+              <option value="4">CCE</option>
+              <option value="5">ICE</option>
+            </select>
+          </div>
+
           <button type="submit" style="margin-top: 30px;">Add</button>
         </form>
       </div>
     </div>
   </div>
+  <script>
+    new MultiSelectTag('dept')  // id
+</script>
 </body>
 
 </html>
