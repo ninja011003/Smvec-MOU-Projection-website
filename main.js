@@ -23,14 +23,22 @@ app.get('/',(req,res)=>{
     res.render('index',data)
 })
 
-app.get('/admin',(req,res)=>{
-    res.render('adminL')
+app.get('/adminPage',(req,res)=>{
+    res.render('adminL',{return_state :""})
 })
 
 app.post('/login',(req,res)=>{
     if(enc_text.username==req.body.username&&enc_text.password==req.body.password){
         res.render('admin');
     }
+    else{
+        res.render('adminL',{return_state :"Incorrect Credential"});
+        
+    }
+})
+
+app.get('/admin',(req,res)=>{
+    
 })
 
 app.post('/upload', upload.single('pdf'), async (req, res) => {
