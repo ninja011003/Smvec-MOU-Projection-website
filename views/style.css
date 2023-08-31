@@ -567,3 +567,61 @@ form .form-control2 {
   color: #E54B4B;
   padding: 10px 20px;
 }
+.view-doc{
+  position: fixed;
+  bottom: 40px;
+  right: 50px;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  background: #E54B4B;
+  border:2px solid #E54B4B;
+  border-radius: 10px;
+  padding: 5px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: .3s;
+}
+.view-doc:hover{
+  background: #c40812;
+  border:2px solid #c40812;
+}
+.pic-cards{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+}
+.pic-card{
+  width: 720px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px #1e1e2425
+}
+.pic-img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pic-img img{
+  width: 700px;
+  border-radius: 10px;
+  margin: 10px
+}
+.pic-text{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.pic-text h2{
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 400;
+  color: #E54B4B;
+}
+.pic-text p{
+  padding: 0px 20px;
+  text-align: center;
+}
+
