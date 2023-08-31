@@ -6,7 +6,7 @@ const uri = 'mongodb+srv://smvecmous:mous@cluster0.gzdsr3g.mongodb.net/?retryWri
 // Create a new MongoClient
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-async function storedetails() {
+async function storedetails(companydetails) {
     try {
         // Connect to the MongoDB server
         await client.connect();
@@ -35,7 +35,7 @@ const companydetails = {
     companyName: 'Example Company',
     duration: '2023-2025',
     iconUrl: 'https://example.com/icon.png',
-    d0cumentUrl: 'https://example.com/image.png',
+    documentUrl: 'https://example.com/image.png',
     department: ['aids','cse']
 };
 storedetails(companydetails);

@@ -12,8 +12,8 @@ const authClient = new google.auth.GoogleAuth({
     credentials: serviceAccountKey,
     scopes: SCOPES,
 });
-const folderId ='1x3yLorrwx9AARPTYeQV-ZvsD_hOLlOZE';
-
+const PDFfolderId ='1x3yLorrwx9AARPTYeQV-ZvsD_hOLlOZE';
+const IMGfolderId ='1SzG7Vk00Zdv9pIwnQhtIyYH6afm3jhjE';
 
 
 
@@ -30,10 +30,44 @@ async function uploadPDF(fileBuffer, originalname) {
         const fileMetadata = {
             name: originalname,
             mimeType: 'application/pdf',
-            parents: [folderId],
+            parents: [PDFfolderId],
         };
         const media = {
             mimeType: 'application/pdf',
+            body: fileStream, // Use the converted readable stream
+        };
+        const response = await drive.files.create({
+            resource: fileMetadata,
+            media: media,
+            fields: 'id,webViewLink',
+        });
+        const finalResponse = {
+            status: response.status,
+            weblink: response.data.webViewLink,
+        };
+        return finalResponse;
+    } catch (error) {
+        console.error('Error uploading to Google Drive:', error);
+        throw error;
+    }
+}
+
+async function uploadImage(fileBuffer, originalname) {
+    try {
+        const drive = google.drive({ version: 'v3', auth: authClient });
+
+        // Convert the fileBuffer to a readable stream
+        const fileStream = new Readable();
+        fileStream.push(fileBuffer);
+        fileStream.push(null);
+
+        const fileMetadata = {
+            name: originalname,
+            mimeType: 'image/jpeg', 
+            parents: [IMGfolderId],
+        };
+        const media = {
+            mimeType: 'image/jpeg', // Set the appropriate MIME type for your image format
             body: fileStream, // Use the converted readable stream
         };
         const response = await drive.files.create({
