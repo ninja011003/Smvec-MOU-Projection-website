@@ -8,6 +8,7 @@
   <title>Admin Sign In</title>
 </head>
 
+
 <body>
   <nav>
     <div class="logo"><img src="img/Smvec-crop.png" alt=""></div>
@@ -19,7 +20,7 @@
   </nav>
   <div class="form-wrapper">
     <h2>Admin Sign In</h2>
-    <form action="/login" method="post">
+    <form id="loginForm" action="/login" method="post">
       <div class="form-control">
         <input type="text" name="username" required>
         <label>Username</label>
@@ -29,8 +30,9 @@
         <label>Password</label>
       </div>
       <button type="submit">Sign In</button>
+      <p id="errorMessage" style="color: red; display: block;"><%= return_state %></p>
     </form>
-    <p id="errorMessage" style="color: red; display: none;">Incorrect credentials</p>
+    
   </div>
 </body>
 
