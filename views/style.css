@@ -29,7 +29,11 @@ nav {
   justify-content: end;
   align-items: center;
 }
-
+.nav-options a button:hover{
+  background: #E54B4B;
+  border: 2px solid #E54B4B;
+  color: white;
+}
 .nav-options a button{
   background: transparent;
   padding: 10px 20px;
@@ -39,6 +43,7 @@ nav {
   font-family: 'Poppins', sans-serif;
   border: 2px solid #E54B4B;
   cursor: pointer;
+  transition: .4s;
 }
 .MOU{
   font-family: 'Poppins', sans-serif;
