@@ -48,7 +48,11 @@ async function uploadPDF(fileBuffer, originalname) {
         return finalResponse;
     } catch (error) {
         console.error('Error uploading to Google Drive:', error);
-        throw error;
+        const finalResponse = {
+            status: 500,
+            weblink: "",
+        };
+        return finalResponse;
     }
 }
 
@@ -82,7 +86,11 @@ async function uploadImage(fileBuffer, originalname) {
         return finalResponse;
     } catch (error) {
         console.error('Error uploading to Google Drive:', error);
-        throw error;
+        const finalResponse = {
+            status: 500,
+            weblink: "",
+        };
+        return finalResponse;
     }
 }
 
@@ -113,6 +121,6 @@ async function retrieveLinks() {
 
 module.exports = {
     uploadPDF: uploadPDF,
-    retrieveLinks: retrieveLinks
+    uploadImage: uploadImage
 };
 

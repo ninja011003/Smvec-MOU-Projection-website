@@ -3,7 +3,8 @@ const ejs = require('ejs')
 const path = require('path')
 const multer = require('multer');
 const bodyParser = require('body-parser');
-const {uploadPDF,retrieveLinks} = require('./DriveFunctions');
+const {uploadPDF,uploadImage} = require('./DriveFunctions');
+const { storedetails} = require('./DbFunction')
 const enc_text = require('./password');
 
 
@@ -52,36 +53,44 @@ app.get('/admin',(req,res)=>{
 //     }
 // });
 
-app.post('/addMou', upload.fields([{ name: 'image' }, { name: 'pdf' }]), (req, res) => {
-    const companyName = req.body.companyName;
-    const yearOfSigning = req.body.yearOfSigning;
-    const duration = req.body.duration;
-    const departments = req.body.dept;
+app.post('/addMou', upload.fields([{name:'image'},{name:'pdf'}]), async (req, res) => {
+    // const companyName = req.body.companyName;
+    // const yearOfSigning = req.body.yearOfSigning;
+    // const duration = req.body.duration;
+    // const departments = req.body.dept;
 
-    // Access uploaded files as buffers
-    console.log(req.body.image);
-    const imageBuffer = req.files['image'][0].buffer;
-    const pdfBuffer = req.files['pdf'][0].buffer;
-    console.log('Received Form Data:');
-    console.log('Company Name:', companyName);
-    console.log('Year of Signing:', yearOfSigning);
-    console.log('Duration:', duration);
-    console.log('Selected Departments:', departments);
-
-    console.log('Uploaded Files:');
-    console.log('Image Buffer:', imageBuffer);
-    console.log('PDF Buffer:', pdfBuffer);
-
+    // // Access uploaded files as buffers
+   
+    // console.log('Received Form Data:');
+    // console.log('Company Name:', companyName);
+    // console.log('Year of Signing:', yearOfSigning);
+    // console.log('Duration:', duration);
+    // console.log('Selected Departments:', departments);
+    // console.log(req.files['image'][0].originalname);
+    const imgResult = await uploadImage(req.files['image'][0].buffer,req.files['image'][0].originalname);
+    const pdfResult = await uploadImage(req.files['pdf'][0].buffer,req.files['pdf'][0].originalname);
+    if(imgResult.status==200&&pdfResult.status==200){
+        if(await storedetails({
+            companyName: req.body.companyName,
+            yearOfSigning: req.body.yearOfSigning,
+            duration: req.body.duration ,
+            iconUrl: imgResult.weblink,
+            documentUrl: pdfResult.weblink,
+            department: req.body.dept
+        })==200){
+            res.render('admin')
+        }
+    }
 
 })
 
-app.get('/links', async (req,res)=>{
+// app.get('/links', async (req,res)=>{
     
-    res.send(await retrieveLinks());
-})
+//     res.send(await retrieveLinks());
+// })
 
 
-app.listen(3002,()=>{
+app.listen(process.env.PORT||3002,()=>{
     console.log("server running")
 })
 

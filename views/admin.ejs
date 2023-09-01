@@ -50,7 +50,7 @@
     <div class="add">
       <div class="form-wrapper2">
         <h2 style="margin-top: 0;">Add MoU</h2>
-        <form action="/addMou" method="post" class="add-form">
+        <form action="/addMou" method="post" enctype="multipart/form-data" class="add-form">
           <div class="form-control2">
             <input type="text" name="companyName" required>
             <label>Company or Organisation Name</label>
@@ -65,12 +65,12 @@
           </div>
           <div style="display:flex; gap: 20px; margin-top: 30px;">
             <div>
-              <input type="file" name="image" id="file">
-            <label for="file" class="upload">Upload Image</label>
+              <input type="file" name="image" id="img" >
+            <label for="img" class="upload">Upload Image</label>
             </div>
             <div>
-              <input type="file" name="pdf" id="file">
-            <label for="file" class="upload">Upload MoU PDF</label>
+              <input type="file" name="pdf" id="pdf" >
+            <label for="pdf" class="upload">Upload MoU PDF</label>
             </div>
           </div>
 

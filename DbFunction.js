@@ -19,10 +19,10 @@ async function storedetails(companydetails) {
     
         // Insert the company information
         const result = await collection.insertOne(companydetails);
-        console.log(`Inserted ${result.insertedCount} document(s)`);
-
+        return 200;
     } catch (err) {
         console.error(err);
+        return 500;
     } finally {
         // Close the connection
         await client.close();
@@ -31,14 +31,9 @@ async function storedetails(companydetails) {
 }
 
 // Call the main function
-const companydetails = {
-    companyName: 'Example Company',
-    duration: '2023-2025',
-    iconUrl: 'https://example.com/icon.png',
-    documentUrl: 'https://example.com/image.png',
-    department: ['aids','cse']
-};
-storedetails(companydetails);
 
-//example 
+
+module.exports={
+    storedetails: storedetails
+}
 

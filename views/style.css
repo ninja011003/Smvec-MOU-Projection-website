@@ -561,6 +561,12 @@ form .form-control2 {
 #file{
   display: none;
 }
+#img{
+  display: none;
+}
+#pdf{
+  display: none;
+}
 .upload{
   border-radius: 10px;
   border: 1px dashed #E54B4B;
