@@ -4,7 +4,7 @@ const path = require('path')
 const multer = require('multer');
 const bodyParser = require('body-parser');
 const {uploadPDF,uploadImage} = require('./DriveFunctions');
-const { storedetails} = require('./DbFunction')
+const { storedetails,getAllDocuments} = require('./DbFunction')
 const enc_text = require('./password');
 
 
@@ -17,10 +17,11 @@ const upload = multer({
     storage: multer.memoryStorage()
 });
 
-app.get('/',(req,res)=>{
+app.get('/', async(req,res)=>{
     const data={
-        
+        companies: await getAllDocuments(),
     }
+    // console.log(data.companies)
     res.render('index',data)
 })
 
@@ -45,7 +46,7 @@ app.get('/admin',(req,res)=>{
 
 app.post('/addMou', upload.fields([{name:'image'},{name:'pdf'}]), async (req, res) => {
     const imgResult = await uploadImage(req.files['image'][0].buffer,req.files['image'][0].originalname);
-    const pdfResult = await uploadImage(req.files['pdf'][0].buffer,req.files['pdf'][0].originalname);
+    const pdfResult = await uploadPDF(req.files['pdf'][0].buffer,req.files['pdf'][0].originalname);
     if(imgResult.status==200&&pdfResult.status==200){
         if(await storedetails({
             companyName: req.body.companyName,
