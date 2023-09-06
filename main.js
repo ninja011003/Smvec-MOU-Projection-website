@@ -20,6 +20,7 @@ const upload = multer({
 app.get('/', async(req,res)=>{
     const data={
         companies: await getAllDocuments(),
+        iconPrefix:'https://drive.google.com/uc?export=view&id=',
         KnowMoreLink: "/knowMore?Oid=",
     }
     // console.log(data.companies)

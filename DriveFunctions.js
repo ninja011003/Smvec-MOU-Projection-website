@@ -79,11 +79,11 @@ async function uploadImage(fileBuffer, originalname) {
             media: media,
             fields: 'id,webViewLink',
         });
-        const viewLink = `https://drive.google.com/uc?export=view&id=${response.data.id}`;
+        const viewLink = response.data.id;
         const finalResponse = {
             status: response.status,
             weblink: viewLink,
-        };
+        };
         return finalResponse;
     } catch (error) {
         console.error('Error uploading to Google Drive:', error);
