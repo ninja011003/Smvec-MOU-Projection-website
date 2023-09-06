@@ -4,7 +4,7 @@ const path = require('path')
 const multer = require('multer');
 const bodyParser = require('body-parser');
 const {uploadPDF,uploadImage} = require('./DriveFunctions');
-const { storedetails,getAllDocuments} = require('./DbFunction')
+const {storedetails,getAllDocuments,getDocumentById,getMouList} = require('./DbFunction')
 const enc_text = require('./password');
 
 
@@ -20,6 +20,7 @@ const upload = multer({
 app.get('/', async(req,res)=>{
     const data={
         companies: await getAllDocuments(),
+        KnowMoreLink: "/knowMore?Oid=",
     }
     // console.log(data.companies)
     res.render('index',data)
@@ -29,9 +30,14 @@ app.get('/adminPage',(req,res)=>{
     res.render('adminL',{return_state :""})
 })
 
-app.post('/login',(req,res)=>{
+app.post('/login',async(req,res)=>{
     if(enc_text.username==req.body.username&&enc_text.password==req.body.password){
-        res.render('admin');
+        const data ={
+            MouList: await getMouList(),
+            resultOfSuccess:"",
+            resultOfFailure: "",
+        }
+        res.render('admin',data);
     }
     else{
         res.render('adminL',{return_state :"Incorrect Credential"});
@@ -56,7 +62,20 @@ app.post('/addMou', upload.fields([{name:'image'},{name:'pdf'}]), async (req, re
             documentUrl: pdfResult.weblink,
             department: req.body.dept
         })==200){
-            res.render('admin')
+            const data={
+                MouList: await getMouList(),
+                resultOfSuccess: "New Mou Added Successfully",
+                resultOfFailure:"",
+            }
+            res.render('admin',data)
+        }
+        else{
+            const data={
+                MouList: await getMouList(),
+                resultOfSuccess:"",
+                resultOfFailure: "Error occured,Please try again",
+            }
+            res.render('admin',data)
         }
     }
 

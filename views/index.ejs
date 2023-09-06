@@ -15,7 +15,7 @@
     <div class="nav-options">
       <a href="/"><button style="border: 2px solid transparent" class="btn">MoU's</button></a>
       <a href="/adminPage"><button style="border: 2px solid transparent" class="btn" >Admin</button></a>
-      <a href="www.smvec.ac.in"><button style="margin-right:50px;">Contact Us</button></a>
+      <a href="https://www.smvec.ac.in"><button style="margin-right:50px;">Contact Us</button></a>
     </div>
   </nav>
   <div class="MOU">
@@ -34,7 +34,7 @@
               <p>Year of signing MoU - <%= company.yearOfSigning%><br>
                 Duration : <%= company.duration%>
               </p>            
-              <a href="#"><button style="display: inline-flex;">Know More <img src="img/link.png" alt="" style="height: 16px; padding: 0; margin-top: 5px; margin-left: 5px; margin-bottom: 5px;"></button></a>
+              <a href=<%=KnowMoreLink+company._id %> ><button style="display: inline-flex;">Know More <img src="img/link.png" alt="" style="height: 16px; padding: 0; margin-top: 5px; margin-left: 5px; margin-bottom: 5px;"></button></a>
             </div>
           </div>
         </div>

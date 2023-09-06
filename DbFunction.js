@@ -1,4 +1,4 @@
-const MongoClient = require("mongodb").MongoClient;
+const { MongoClient, ObjectID } = require("mongodb");
 
 // Connection URI from MongoDB Atlas
 const uri =
@@ -33,6 +33,54 @@ async function storedetails(companydetails) {
   }
 }
 
+async function getMouList() {
+
+  try {
+    // Connect to the MongoDB server
+    await client.connect();
+    // console.log("Connected to MongoDB Atlas");
+
+    // Access the database and collection
+    const database = client.db("Mou");
+    const collection = database.collection("details");
+
+    // Find all documents with the specified projection
+    const documents = await collection.find({}, {
+      _id: 1,     
+      companyName: 1 
+    }).toArray();
+
+    return documents;
+  } catch (error) {
+    console.error('Error:', error);
+  } finally {
+    client.close();
+  }
+}
+
+async function getDocumentById(documentId) {
+  try {
+    // Connect to the MongoDB server
+    await client.connect();
+    // console.log("Connected to MongoDB Atlas");
+
+    // Access the database and collection
+    const database = client.db("Mou");
+    const collection = database.collection("details");
+    // Convert the provided documentId string to an ObjectID
+    const objectId = new ObjectID(documentId);
+
+    // Find the document with the given _id
+    const document = await collection.findOne({ _id: objectId });
+
+    return document;
+  } catch (error) {
+    console.error("Error:", error);
+  } finally {
+    client.close();
+  }
+}
+
 async function getAllDocuments() {
   try {
     await client.connect();
@@ -51,6 +99,8 @@ async function getAllDocuments() {
 }
 
 module.exports = {
+  getMouList: getMouList,
+  getDocumentById: getDocumentById,
   storedetails: storedetails,
-  getAllDocuments: getAllDocuments
+  getAllDocuments: getAllDocuments,
 };
