@@ -577,6 +577,7 @@ form .form-control2 {
   border: 1px dashed #E54B4B;
   color: #E54B4B;
   padding: 10px 20px;
+  cursor: pointer;
 }
 .view-doc{
   position: fixed;
