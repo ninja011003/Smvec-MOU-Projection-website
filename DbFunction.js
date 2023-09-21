@@ -97,6 +97,38 @@ async function getAllDocuments() {
     client.close();
   }
 }
+async function deleteDocumentById(idToDelete) {
+  const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
+
+  try {
+    // Connect to the MongoDB server
+    await client.connect();
+
+    // Select the database
+    const db = client.db(dbName);
+
+    // Specify the collection where you want to delete the document
+    const collection = db.collection('your_collection_name'); // Replace with your collection name
+
+    // Delete the document with the provided ID
+    const result = await collection.deleteOne({ _id: idToDelete });
+
+    if (result.deletedCount === 1) {
+      console.log('Document deleted successfully');
+    } else {
+      console.log('No document matched the provided ID');
+    }
+  } catch (err) {
+    console.error('Error deleting document:', err);
+  } finally {
+    // Close the connection
+    client.close();
+  }
+}
+
+// Usage example:
+const idToDelete = 'your_document_id'; // Replace with the ID of the document you want to delete
+deleteDocumentById(idToDelete);
 
 module.exports = {
   getMouList: getMouList,
