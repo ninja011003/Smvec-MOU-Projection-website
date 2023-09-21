@@ -1,5 +1,5 @@
 const { MongoClient } = require("mongodb");
-const {ObjectID} = require('mongodb')
+const {ObjectId} = require('mongodb')
 
 // Connection URI from MongoDB Atlas
 const uri =
@@ -69,7 +69,7 @@ async function getDocumentById(documentId) {
     const database = client.db("Mou");
     const collection = database.collection("details");
     // Convert the provided documentId string to an ObjectID
-    const objectId = ObjectID(documentId);
+    const objectId = new ObjectId(documentId);
 
     // Find the document with the given _id
     const document = await collection.findOne({ _id: objectId });
@@ -92,7 +92,7 @@ async function deleteDocumentById(documentId) {
     const database = client.db("Mou");
     const collection = database.collection("details");
     // Convert the provided documentId string to an ObjectID
-    const objectId = new ObjectID(documentId);
+    const objectId = new ObjectId(documentId);
     // Delete the document with the specified _id
     const result = await collection.deleteOne({ _id: objectId });
 
@@ -125,38 +125,7 @@ async function getAllDocuments() {
     client.close();
   }
 }
-async function deleteDocumentById(idToDelete) {
-  const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
 
-  try {
-    // Connect to the MongoDB server
-    await client.connect();
-
-    // Select the database
-    const db = client.db(dbName);
-
-    // Specify the collection where you want to delete the document
-    const collection = db.collection('your_collection_name'); // Replace with your collection name
-
-    // Delete the document with the provided ID
-    const result = await collection.deleteOne({ _id: idToDelete });
-
-    if (result.deletedCount === 1) {
-      console.log('Document deleted successfully');
-    } else {
-      console.log('No document matched the provided ID');
-    }
-  } catch (err) {
-    console.error('Error deleting document:', err);
-  } finally {
-    // Close the connection
-    client.close();
-  }
-}
-
-// Usage example:
-const idToDelete = 'your_document_id'; // Replace with the ID of the document you want to delete
-deleteDocumentById(idToDelete);
 
 module.exports = {
   getMouList: getMouList,
@@ -166,10 +135,5 @@ module.exports = {
   deleteDocumentById: deleteDocumentById,
 };
 
-async function call(){
-  var x= await getDocumentById("64f3696003cda1e2f5e015d2");
-  console.log(x)
-}
 
-call()
 

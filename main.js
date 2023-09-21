@@ -61,7 +61,14 @@ app.get('/delMou',async(req,res)=>{
         res.render('admin',data);
     }
     else{
-        
+        const data ={
+            MouList: await getMouList(),
+            resultOfSuccess:"",
+            resultOfFailure: "",
+            KnowMoreLink: "/knowMore?Oid=",
+            DelLink: "/delMou?Oid="
+        }
+        res.render('admin',data);
     }
 })
 
