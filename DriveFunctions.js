@@ -95,17 +95,7 @@ async function uploadImage(fileBuffer, originalname) {
     }
 }
 
-async function deleteFile(fileId) {
-    const drive = google.drive({ version: 'v3', auth: authClient});
 
-    try {
-        await drive.files.delete({ fileId });
-        return 1;
-    } catch (error) {
-        console.error('Error deleting file:', error);
-        return 0;
-    }
-}
 
 
 async function retrieveLinks() {
@@ -131,7 +121,6 @@ async function retrieveLinks() {
 }
 
 module.exports = {
-    deleteFile:deleteFile,
     uploadPDF: uploadPDF,
     uploadImage: uploadImage
 };

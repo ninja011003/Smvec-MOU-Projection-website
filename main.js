@@ -3,8 +3,8 @@ const ejs = require('ejs')
 const path = require('path')
 const multer = require('multer');
 const bodyParser = require('body-parser');
-const {uploadPDF,uploadImage,deleteFile} = require('./DriveFunctions');
-const {storedetails,getAllDocuments,getDocumentById,getMouList} = require('./DbFunction')
+const {uploadPDF,uploadImage} = require('./DriveFunctions');
+const {storedetails,getAllDocuments,deleteDocumentById,getMouList} = require('./DbFunction')
 const enc_text = require('./password');
 
 
@@ -38,6 +38,7 @@ app.post('/login',async(req,res)=>{
             resultOfSuccess:"",
             resultOfFailure: "",
             KnowMoreLink: "/knowMore?Oid=",
+            DelLink: "/delMou?Oid="
         }
         res.render('admin',data);
     }
@@ -47,8 +48,21 @@ app.post('/login',async(req,res)=>{
     }
 })
 
-app.get('/admin',(req,res)=>{
-    
+app.get('/delMou',async(req,res)=>{
+    const result = await deleteDocumentById(req.query.Oid);
+    if(result===1){
+        const data ={
+            MouList: await getMouList(),
+            resultOfSuccess:"",
+            resultOfFailure: "",
+            KnowMoreLink: "/knowMore?Oid=",
+            DelLink: "/delMou?Oid="
+        }
+        res.render('admin',data);
+    }
+    else{
+        
+    }
 })
 
 
