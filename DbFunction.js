@@ -1,4 +1,5 @@
-const { MongoClient, ObjectID } = require("mongodb");
+const { MongoClient } = require("mongodb");
+const {ObjectID} = require('mongodb')
 
 // Connection URI from MongoDB Atlas
 const uri =
@@ -68,7 +69,7 @@ async function getDocumentById(documentId) {
     const database = client.db("Mou");
     const collection = database.collection("details");
     // Convert the provided documentId string to an ObjectID
-    const objectId = new ObjectID(documentId);
+    const objectId = ObjectID(documentId);
 
     // Find the document with the given _id
     const document = await collection.findOne({ _id: objectId });
@@ -76,6 +77,33 @@ async function getDocumentById(documentId) {
     return document;
   } catch (error) {
     console.error("Error:", error);
+  } finally {
+    client.close();
+  }
+}
+
+async function deleteDocumentById(documentId) {
+  try {
+    // Connect to the MongoDB server
+    await client.connect();
+    // console.log("Connected to MongoDB Atlas");
+
+    // Access the database and collection
+    const database = client.db("Mou");
+    const collection = database.collection("details");
+    // Convert the provided documentId string to an ObjectID
+    const objectId = new ObjectID(documentId);
+    // Delete the document with the specified _id
+    const result = await collection.deleteOne({ _id: objectId });
+
+    if (result.deletedCount === 1) {
+      return 1;
+    } else {
+      return 0;
+    }
+  } catch (error) {
+    console.error(error);
+    return -1;
   } finally {
     client.close();
   }
@@ -135,4 +163,13 @@ module.exports = {
   getDocumentById: getDocumentById,
   storedetails: storedetails,
   getAllDocuments: getAllDocuments,
+  deleteDocumentById: deleteDocumentById,
 };
+
+async function call(){
+  var x= await getDocumentById("64f3696003cda1e2f5e015d2");
+  console.log(x)
+}
+
+call()
+
