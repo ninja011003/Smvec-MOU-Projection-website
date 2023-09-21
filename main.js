@@ -3,13 +3,13 @@ const ejs = require('ejs')
 const path = require('path')
 const multer = require('multer');
 const bodyParser = require('body-parser');
-const {uploadPDF,uploadImage} = require('./DriveFunctions');
+const {uploadPDF,uploadImage,deleteFile} = require('./DriveFunctions');
 const {storedetails,getAllDocuments,getDocumentById,getMouList} = require('./DbFunction')
 const enc_text = require('./password');
 
 
 const app = express()
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));``
 app.set('view engine','ejs')
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'views')));
@@ -37,6 +37,7 @@ app.post('/login',async(req,res)=>{
             MouList: await getMouList(),
             resultOfSuccess:"",
             resultOfFailure: "",
+            KnowMoreLink: "/knowMore?Oid=",
         }
         res.render('admin',data);
     }
